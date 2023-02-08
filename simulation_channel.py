@@ -250,10 +250,10 @@ class Channel(PositionScatter):
 
         return p, a, f
 
-    def upade_and_plot_3dfft(self, n_steps=100, sampling_frequency=51.2e6, bandwidth=12.8e6, period=10e-6, log_power=True,
-                             only_bw=False, **options):
-        p, a, f = self.__call__(n_steps=n_steps, sampling_frequency=sampling_frequency, bandwidth=bandwidth, period=period, log_power=log_power,
-                                only_bw=only_bw, **options)
+    def update_and_plot_3dfft(self, n_steps=100, sampling_frequency=51.2e6, bandwidth=12.8e6, period=10e-6, log_power=True,
+                              only_bw=False, **options):
+        p, a, f = self.__call__(n_steps=n_steps, sampling_frequency=sampling_frequency, bandwidth=bandwidth,
+                                period=period, log_power=log_power, only_bw=only_bw, **options)
         if options.pop('time_x_freq', False):
             x, y = np.meshgrid(np.arange(n_steps) * self.step_time, f / sampling_frequency)
             if options.pop('plot_phase', False):
@@ -279,8 +279,8 @@ class Channel(PositionScatter):
             ax.set_ylabel(r'$t$ [s]', fontsize=15)
             ax.set_zlabel('Pot [dB]', fontsize=15)
 
-    def upade_and_plot_2dfft(self, n_steps=100, sampling_frequency=51.2e6, bandwidth=12.8e6, period=10e-6, log_power=True,
-                             only_bw=True, **options):
+    def update_and_plot_2dfft(self, n_steps=100, sampling_frequency=51.2e6, bandwidth=12.8e6, period=10e-6, log_power=True,
+                              only_bw=True, **options):
         p, a, f = self.__call__(n_steps=n_steps, sampling_frequency=sampling_frequency, bandwidth=bandwidth, period=period, log_power=log_power,
                                 only_bw=only_bw, **options)
         plt.figure(figsize=(20, 10))
