@@ -48,8 +48,8 @@ def generating_samples_for_the_training(channel=sc.Channel(), n_sim_channel=1, f
     y_test1 = np.array(x_test1[delta_t_max:, :, -delta_t_max:, 0], dtype=dtype_save)
 
     # convert from power (modulo) to complex
-    x_train1 = convert_p2c(x_train1, a_train1)
-    x_test1 = convert_p2c(x_test1, a_test1)
+    # x_train1 = convert_p2c(x_train1, a_train1)
+    # x_test1 = convert_p2c(x_test1, a_test1)
 
     x_train1 = np.array(x_train1[:-delta_t_max], dtype=dtype_save)
     x_test1 = np.array(x_test1[:-delta_t_max], dtype=dtype_save)
@@ -90,8 +90,8 @@ def generating_samples_for_the_training(channel=sc.Channel(), n_sim_channel=1, f
         y_test1 = np.array(x_test1[delta_t_max:, :, -delta_t_max:, 0], dtype=dtype_save)
 
         # convert from power (modulo) to complex
-        x_train1 = convert_p2c(x_train1, a_train1)
-        x_test1 = convert_p2c(x_test1, a_test1)
+        # x_train1 = convert_p2c(x_train1, a_train1)
+        # x_test1 = convert_p2c(x_test1, a_test1)
 
         x_train1 = np.array(x_train1[:-delta_t_max], dtype=dtype_save)
         x_test1 = np.array(x_test1[:-delta_t_max], dtype=dtype_save)

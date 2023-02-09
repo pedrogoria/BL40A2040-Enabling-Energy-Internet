@@ -48,27 +48,29 @@ for indx in range(len(f)):
 print("-> 100% \n ")
 
 # printing
-fig = plt.figure(figsize=plt.figaspect(0.5))
-ax0 = fig.add_subplot(1, 2, 1, projection='3d')
-ax1 = fig.add_subplot(1, 2, 2, projection='3d')
+fig = plt.figure(figsize=plt.figaspect(1))
+ax0 = fig.add_subplot(2, 1, 1, projection='3d')
+ax1 = fig.add_subplot(2, 1, 2, projection='3d')
 
 # print normalised cross-covariance
 x, y = np.meshgrid(lags, f / sampling_frequency)
 # ax = plt.axes(projection='3d')
 ax0.plot_surface(y, x, cross_correlation, rstride=1, cstride=1, cmap='viridis', edgecolor='none')
-ax0.set_title('power cross-correlation')
+ax0.set_zlim(0,1)
+ax0.set_title('(a) power cross-covariance')
 ax0.set_xlabel(r'$\frac{f}{f_s}$', fontsize=15)
-ax0.set_ylabel(r'Lag [s]', fontsize=15)
-ax0.set_zlabel(r'$R(t)$', fontsize=15)
+ax0.set_ylabel(r'$\tau$ [s]', fontsize=15)
+ax0.set_zlabel(r'$R(\tau)_{|C_0|,|C_1|}$', fontsize=15)
 
 # print normalised auto-covariance
 x, y = np.meshgrid(lags, f / sampling_frequency)
 # ax = plt.axes(projection='3d')
 ax1.plot_surface(y, x, auto_correlation, rstride=1, cstride=1, cmap='viridis', edgecolor='none')
-ax1.set_title('power auto-correlation')
+ax1.set_zlim(0,1)
+ax1.set_title('(b) power autocovariance')
 ax1.set_xlabel(r'$\frac{f}{f_s}$', fontsize=15)
-ax1.set_ylabel(r'Lag [s]', fontsize=15)
-ax1.set_zlabel(r'$R(t)$', fontsize=15)
+ax1.set_ylabel(r'$\tau$ [s]', fontsize=15)
+ax1.set_zlabel(r'$R(\tau)_{|C_0|,|C_0|}$', fontsize=15)
 
 np.save(data_path + 'lags.npy', lags)
 np.save(data_path + 'f.npy', f)
